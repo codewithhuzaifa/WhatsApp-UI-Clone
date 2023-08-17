@@ -8,14 +8,41 @@ class Status extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: 9,
-      itemBuilder: (context, index) => ListTile(
-        leading: CircleAvatar(
-          backgroundColor: Colors.teal,
-          backgroundImage: NetworkImage(imageurls[index]),
-        ),
-        title: Text(names[index]),
-        subtitle: Text(time[index]),
-      ),
+      itemBuilder: (context, index) => index == 0
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ListTile(
+                  leading: CircleAvatar(
+                    backgroundColor: Colors.grey.shade500,
+                  ),
+                  title: const Text('My Status'),
+                  subtitle: const Text('Tap to add status'),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(9),
+                  child: Text(
+                    'Recent Updates',
+                  ),
+                ),
+              ],
+            )
+          : ListTile(
+              leading: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    width: 3,
+                    color: Colors.teal,
+                  ),
+                ),
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(imageurls[index]),
+                ),
+              ),
+              title: Text(names[index]),
+              subtitle: Text(time[index]),
+            ),
     );
   }
 }
