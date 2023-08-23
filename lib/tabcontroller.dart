@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class _TabControllerScope extends InheritedWidget {
+class TabControllerScope extends InheritedWidget {
   final TabController tabController;
 
-  _TabControllerScope({
+  TabControllerScope({
     required this.tabController,
     required Widget child,
   }) : super(child: child);
 
   @override
-  bool updateShouldNotify(_TabControllerScope oldWidget) {
+  bool updateShouldNotify(TabControllerScope oldWidget) {
     return tabController != oldWidget.tabController;
   }
 
-  static _TabControllerScope? of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<_TabControllerScope>();
+  static TabControllerScope? of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<TabControllerScope>();
   }
 }
